@@ -38,7 +38,7 @@ public class Car {
 
 	@Column(name = "launch_date")
 	@CreationTimestamp
-	private LocalDateTime launachDate;
+	private LocalDateTime launchDate;
 
 	@ManyToOne
 	@JoinColumn(name = "fuel_type_id", nullable = false)
@@ -54,7 +54,7 @@ public class Car {
 	private Boolean isActive;
 
 	@OneToOne
-	@JoinColumn(name = "rental_rate_id")
+	@JoinColumn(name = "rental_rate_id", nullable = false)
 	private RentalRate rentalRate;
 
 }
