@@ -1,0 +1,23 @@
+.form-container {
+    width:500px;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+  }
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #495057;
+  }
+  .form-control:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #80bdff;
+  }
+  .btn-primary {
+    width: 100%;
+    font-weight: bold;
+  }

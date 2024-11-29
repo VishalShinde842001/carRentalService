@@ -1,0 +1,83 @@
+<div class="container-fluid" style="height: 100%;">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="form-container">
+            <h2>Login</h2>
+            <form #userForm="ngForm" (ngSubmit)="login()" novalidate>
+                <!-- Phone Input -->
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    [(ngModel)]="loginData.mobile"
+                    placeholder="Enter your phone number"
+                    #phone="ngModel"
+                    required
+                  />
+                  <!-- Validation Messages -->
+                  <div *ngIf="phone.invalid && phone.touched" class="text-danger">
+                    <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
+                  </div>
+                </div>
+              
+                <!-- Password Input -->
+                <div class="mb-3 position-relative">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    [(ngModel)]="loginData.password"
+                    placeholder="Enter your password"
+                    #password="ngModel"
+                    required
+                  />
+                  <!-- Toggle Show Password -->
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary position-absolute"
+                    style="top: 50%; right: 10px;"
+                    (click)="toggleShowPassword()"
+                  >
+                    {{ showPassword ? 'Hide' : 'Show' }}
+                  </button>
+                  <!-- Validation Messages -->
+                  <div *ngIf="password.invalid && password.touched" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">Password is required.</div>
+                  </div>
+                </div>
+              
+                <!-- Select Input -->
+                <div class="mb-3">
+                  <label for="library" class="form-label me-5">Select Role:</label>
+                  <p-dropdown
+                    [options]="roleList"
+                    optionLabel="type"
+                    optionValue="userTypeId"
+                    [(ngModel)]="loginData.userTypeId"
+                    name="library"
+                    placeholder="Select a Role"
+                    #library="ngModel"
+                    required
+                  >
+                  </p-dropdown>
+                  <!-- Validation Messages -->
+                  <div *ngIf="library.invalid && library.touched" class="text-danger">
+                    <div *ngIf="library.errors?.['required']">Role selection is required.</div>
+                  </div>
+                </div>
+              
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+              </form>
+              
+
+
+        </div>
+    </div>
+
+
+</div>
