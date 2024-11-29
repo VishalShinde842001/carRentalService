@@ -51,12 +51,14 @@ public class UserServiceImpl implements UserService {
 	public Response login(User user) throws Exception {
 		Response response = new Response();
 		try {
-			if (null == user || null == user.getMobile() || user.getPassword() == null) {
+			if (null == user || null == user.getMobile()
+					|| user.getPassword() == null && user.getUserTypeId() == null) {
 				throw new CustomException(ErrorConstants.REQUIRED_FIELD_MISSING,
 						ErrorConstants.REQUIRED_FIELD_MISSING_MESSAGE);
 			}
-
-			User existingUserByMobile = objectDao.getObjectByParam(User.class, "mobile", user.getMobile());
+			UserType usertype = objectDao.getObjectById(UserType.class, user.getUserTypeId());
+			User existingUserByMobile = objectDao.getObjectByTwoParams(User.class, "mobile", user.getMobile(),
+					"userType", usertype);
 			if (null == existingUserByMobile) {
 				throw new CustomException(ErrorConstants.DATA_NOT_FOUND,
 						"No user found with the provided mobile number. Please verify and try again.");

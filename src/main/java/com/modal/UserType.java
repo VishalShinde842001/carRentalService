@@ -2,6 +2,8 @@ package com.modal;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +35,7 @@ public class UserType {
 	@Column(name = "status")
 	private Boolean isActive;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "userType", cascade = CascadeType.ALL)
 	private List<User> users;
 

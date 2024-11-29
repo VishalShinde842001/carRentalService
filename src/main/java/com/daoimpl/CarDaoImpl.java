@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.bo.Pagination;
 import com.dao.CarDao;
@@ -14,7 +15,7 @@ import com.modal.Car;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+@Repository
 public class CarDaoImpl implements CarDao {
 
 	@Autowired

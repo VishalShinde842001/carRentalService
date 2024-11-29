@@ -22,4 +22,6 @@ public class ErrorConstants {
 
 	public static final String LOGIN_SUCESSFULLY_MESSAGE = "Login successful!";
 
+	public static final String LIST_GET_SUCESSFULLY = "List Get Sucessfully...";
+
 }
