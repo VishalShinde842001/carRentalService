@@ -51,8 +51,10 @@ public class UserServiceImpl implements UserService {
 	public Response login(User user) throws Exception {
 		Response response = new Response();
 		try {
-			if (null == user || null == user.getMobile()
-					|| user.getPassword() == null && user.getUserTypeId() == null) {
+			System.out.println("user.getMobile()========>" + user.getMobile());
+			System.out.println("user.getUserTypeId(======>" + user.getUserTypeId());
+			if (null == user || null == user.getMobile() || user.getPassword() == null
+					|| user.getUserTypeId() == null) {
 				throw new CustomException(ErrorConstants.REQUIRED_FIELD_MISSING,
 						ErrorConstants.REQUIRED_FIELD_MISSING_MESSAGE);
 			}
