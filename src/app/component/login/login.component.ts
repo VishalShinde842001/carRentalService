@@ -3,6 +3,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CommonService } from '../../service/common.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private commonService: CommonService) {
+  constructor(private commonService: CommonService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   roleList: any = [];
   showPassword: boolean = false;
   toggleShowPassword() {
-    this.showPassword = !this.showPassword; 
+    this.showPassword = !this.showPassword;
   }
   getRoles() {
     this.commonService.getRequest(this.commonService.SERVER_URL['ROLE_LIST']).subscribe((response: any) => {
@@ -35,7 +36,18 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.commonService.postRequest(this.commonService.SERVER_URL['LOGIN'], this.loginData).subscribe()
+    this.commonService.postRequest(this.commonService.SERVER_URL['LOGIN'], this.loginData).subscribe(
+      (response: any) => {
+        if (response.status == 200) {
+          localStorage.setItem("user", response.result);
+          if(response.result && response.result.userType && response.result.userType.type=="Admin"){
+            this.router.navigate(['car-list']);
+          }else{
+            this.router.navigate(['web-car-list']);
+          }
+        }
+      }
+    )
   }
 
 }
