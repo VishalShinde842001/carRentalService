@@ -3,8 +3,30 @@
 <div class="container">
     <table>
         <thead>
-            
+            <tr>
+                <th>Car Id</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>R. Number</th>
+                <th>Fuel Type</th>
+                <th>Mileage</th>
+                <th>Air Bags</th>
+                <th>Launch Date</th>
+                <th>Status</th>
+            </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            <tr *ngFor="let car of carList">
+                <td>{{car.carId}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.registrationNumber}}</td>
+                <td>{{car.fuelTypeStr}}</td>
+                <td>{{car.mileage}}</td>
+                <td>{{car.mileage}}</td>
+                <td>{{car.launchDate}}</td>
+                <td>{{car.isActive}}</td>
+            </tr>
+        </tbody>
     </table>
 </div>
